@@ -21,11 +21,9 @@
 
 ```
 SimpleTranslate/
-├── main.py                    # 程序入口：单例检查、闪屏、应用启动
+├── main.py                    # 程序入口
 ├── make_icon.py               # 生成 app.ico 图标
 ├── requirements.txt           # Python 依赖
-├── SimpleTranslate.spec       # PyInstaller 打包配置
-├── 打包exe.bat                # 一键打包脚本
 ├── app.ico                    # 应用图标
 ├── config.properties.example  # 配置文件模板
 ├── src/
@@ -41,8 +39,8 @@ SimpleTranslate/
 │   └── app_controller.py      # 应用控制器，串联各模块
 └── resources/
     └── terms/
-        ├── embedded.json      # 嵌入式术语表
-        └── software.json      # 软件术语表
+        ├── embedded.json      # 示例：嵌入式术语表
+        └── software.json      # 示例：软件术语表
 ```
 
 ## 安装
@@ -91,28 +89,14 @@ pip install -r requirements.txt
 
 > 所有配置项均可在应用内「设置」对话框修改，保存后立即生效。
 
-## 使用
-
-```bash
-python main.py
-```
+## 使用指南
 
 - **划词翻译**：点击控制窗「开始」按钮启用监听，在任意应用中选中英文文本即可弹出译文
+- **折叠悬浮球**：点击“ - ”号折叠成胶囊
 - **PDF 翻译**：控制窗或托盘菜单点「导入 PDF」，选择文件与导出模式
 - **术语表**：托盘菜单「术语表」可查看/编辑术语
 - **设置**：托盘菜单「设置」可切换引擎、调整划词与悬浮窗参数
 
-## 打包为 exe
-
-```bash
-# 方式一：批处理脚本（含依赖检查、语法检查、资源拷贝、产物校验）
-打包exe.bat
-
-# 方式二：直接调用 PyInstaller
-python -m PyInstaller --noconfirm SimpleTranslate.spec
-```
-
-产物位于 `dist/SimpleTranslate/SimpleTranslate.exe`。
 
 ## 技术要点
 
@@ -121,9 +105,10 @@ python -m PyInstaller --noconfirm SimpleTranslate.spec
 - **缓存归一化**：Unicode NFKC + 合并空白 + 去尾标点 + 统一标点，大幅提升命中率
 - **用量持久化**：每次翻译后即时写回配置文件，异常退出不丢失
 
-## 平台
+## 适用平台
 
 仅支持 Windows（使用了 `ctypes.windll`、Win32 Mutex、单例窗口枚举等平台 API）。
+后续可能开发安卓版本
 
 ## 许可
 
