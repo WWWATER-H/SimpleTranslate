@@ -1,0 +1,82 @@
+# 简单翻译 — 配置文件
+# 复制本文件为 config.properties 并填入你的 API key
+# 所有设置可通过应用内"设置"对话框修改, 保存后立即生效
+
+# ── DeepL Free API ──────────────────────────────────────────
+# 注册地址: https://www.deepl.com/pro-api (选择 Free计划)
+# 注册后在账户设置里能看到 Authentication Key
+deepl.api_key=
+deepl.endpoint=https://api-free.deepl.com/v2/translate
+# 免费版额度: 50万字符/月
+deepl.monthly_limit=500000
+
+# ── 百度翻译开放平台 ────────────────────────────────────────
+# 注册地址: https://fanyi-api.baidu.com/
+# 注册后在管理控制台 -> 开发者信息 获取 APP ID 和密钥
+baidu.app_id=
+baidu.secret_key=
+baidu.endpoint=https://fanyi-api.baidu.com/api/trans/vip/translate
+# 免费版额度: 6万字符/月 (标准版), 可改为你的实际额度
+baidu.monthly_limit=60000
+
+# ── OpenAI 兼容 API ─────────────────────────────────────────
+# 可对接: OpenAI GPT / DeepSeek / 通义千问 / Moonshot / 本地 Ollama 等
+# 任何遵循 OpenAI /v1/chat/completions 协议的服务
+openai.api_key=
+openai.base_url=https://api.openai.com/v1
+openai.model=gpt-4o-mini
+# 0 表示不限制
+openai.monthly_limit=0
+
+# ── 默认翻译引擎 ────────────────────────────────────────────
+# 可选: deepl / baidu / openai
+translate.default_engine=deepl
+
+# ── 网络 ─────────────────────────────────────────────────────
+# 请求超时秒数
+network.timeout=15
+
+# ── 术语处理 ────────────────────────────────────────────────
+# 模式: bilingual(原文+译文对照) / chinese_only(仅中文) / glossary(术语表覆盖)
+term.mode=chinese_only
+# 启用的术语表(逗号分隔): embedded,software
+term.active_tables=embedded,software
+
+# ── 缓存 ─────────────────────────────────────────────────────
+cache.db_path=cache/translation_cache.db
+
+# ── 划词监听 ────────────────────────────────────────────────
+# 选区最小字符数 (少于不触发)
+selection.min_chars=2
+# 选区最大字符数 (超过不触发)
+selection.max_chars=5000
+# 两次划词最小间隔(毫秒), 防止连击误触发
+selection.debounce_ms=350
+# 相同文本在此窗口内不重复翻译(毫秒), 0=关闭
+selection.duplicate_window_ms=2000
+# 仅含英文字母的文本才触发翻译 (1=是, 0=否)
+selection.require_ascii_letter=1
+# 忽略网址 (http/https/www)
+selection.ignore_urls=1
+# 忽略邮箱地址
+selection.ignore_emails=1
+# 忽略 Windows 文件路径
+selection.ignore_paths=1
+# 忽略纯符号选区
+selection.ignore_symbols=1
+# 忽略数字占比 ≥80% 的选区
+selection.ignore_mostly_numbers=1
+
+# ── 悬浮窗 ──────────────────────────────────────────────────
+# 是否显示原文 (可点击展开/折叠)
+popup.show_source=1
+# 原文超过该长度时折叠
+popup.max_source_chars=240
+# 悬浮窗最大高度占屏幕高度的百分比 (30-90)
+popup.max_height_percent=70
+# 默认固定窗口 (1=固定, 鼠标/键盘输入不隐藏)
+popup.default_pinned=0
+
+# ── 通用 ─────────────────────────────────────────────────────
+# 启动时自动启用划词翻译 (1=是, 0=否)
+app.auto_listen=0
