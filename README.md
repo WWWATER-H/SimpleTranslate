@@ -127,4 +127,4 @@ python -m PyInstaller --noconfirm SimpleTranslate.spec
 
 ## 许可
 
-本项目仅供学习交流。
+本项目基于 [GPL-3.0](LICENSE) 许可证发布。任何人可自由使用、修改和分发，但衍生作品必须同样以 GPL-3.0 开源。
